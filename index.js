@@ -12,15 +12,17 @@ const atualizarBanco = () => {
 }
 
 const listarPets = () => {
-    for (let pet of bancoDados.pets) {
-        //template string
-        console.log(`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'}`);
 
-        for (const servico of pet.servicos) {
+    bancoDados.pets.forEach((pet) => {
+
+        console.log(`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'}`);
+    
+        pet.servicos.forEach((servico) => {
             console.log(`${servico.data} - ${servico.nome}`);
-        }
-    }
+        })
+    })
 }
+
 
 const vacinarPet = pet => {
     if (!pet.vacinado) {
@@ -100,7 +102,10 @@ const buscarPet = (nomePet) => {
 }
 
 const filtrarTipoPet = (tipoPet) => {
-
+    // && E - AND
+    // || OU - OR
+    // == verifica valores iguais
+    // === verifica valores e tipos iguais
     let petsEncontrados = bancoDados.pets.filter((pet) => {
         return pet.tipo == tipoPet;
     });
@@ -109,9 +114,7 @@ const filtrarTipoPet = (tipoPet) => {
 }
 
 const clientePremium = (pet) => {
-    let nServicos = bancoDados.pets.reduce((total, pet) => {
-        return total + pet.servicos.length;
-    })
+    let nServicos = pet.servicos.length;
 
     if (nServicos > 5) {
         console.log(`Olá, ${pet.nome}! Você é um cliente especial e ganhou um descontão!`);
@@ -120,11 +123,18 @@ const clientePremium = (pet) => {
     }
 }
 
+darBanhoPet(bancoDados.pets[4]);
+// darBanhoPet(bancoDados.pets[4]);
+// darBanhoPet(bancoDados.pets[4]);
+// darBanhoPet(bancoDados.pets[4]);
+// darBanhoPet(bancoDados.pets[4]);
+// darBanhoPet(bancoDados.pets[4]);
+// clientePremium(bancoDados.pets[4])
+// console.log(buscarPet('Bidu'));
 // console.log(clientePremium(bancoDados.pets[2]));
 
-campanhaVacina();
+// campanhaVacina();
 
-// darBanhoPet(bancoDados.pets[1]);
 // console.log("-----------")
 // listarPets();
 // adicionarPet({
