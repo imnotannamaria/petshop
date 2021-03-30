@@ -27,3 +27,15 @@ console.log("---------")
 atenderCliente(pets[2], apararUnhas);
 console.log("---------")
 atenderCliente(pets[1]);
+
+let pessoa = {
+    nome: 'Anna',
+    idade: 18,
+    profissao: 'dev',
+    contato: '976546282',
+    habilidades: ['node.js', 'mysql', 'js']
+}
+
+let {nome, idade} = pessoa;
+
+console.log(`${nome} - ${idade}`);
